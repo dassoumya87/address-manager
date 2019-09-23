@@ -45,6 +45,15 @@ public class GetSingleBusinessPartnerByIdCommand {
                         ResilienceConfiguration.BulkheadConfiguration.of()
                                 .maxConcurrentCalls(20));
 
+        //Caching Configuration
+        final ResilienceConfiguration.CacheConfiguration cacheConfig =
+                ResilienceConfiguration.CacheConfiguration
+                        .of(Duration.ofSeconds(60))
+                        .withParameters(id);
+
+        myResilienceConfig.cacheConfiguration(cacheConfig);
+
+
     }
 
 

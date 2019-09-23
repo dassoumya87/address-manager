@@ -43,6 +43,13 @@ public class GetAllBusinessPartnersCommand {
                         ResilienceConfiguration.BulkheadConfiguration.of()
                                 .maxConcurrentCalls(20));
 
+        //Caching Configuration
+        final ResilienceConfiguration.CacheConfiguration cacheConfig =
+                ResilienceConfiguration.CacheConfiguration
+                        .of(Duration.ofSeconds(60))
+                        .withoutParameters();
+
+        myResilienceConfig.cacheConfiguration(cacheConfig);
     }
 
     public List<BusinessPartner> execute() {
