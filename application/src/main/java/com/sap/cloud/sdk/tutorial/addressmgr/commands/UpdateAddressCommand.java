@@ -1,5 +1,6 @@
 package com.sap.cloud.sdk.tutorial.addressmgr.commands;
 
+import com.sap.cloud.sdk.odatav2.connectivity.ODataUpdateResult;
 import com.sap.cloud.sdk.s4hana.connectivity.ErpHttpDestination;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerAddress;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
@@ -27,7 +28,10 @@ public class UpdateAddressCommand {
     }
 
     public Integer execute() throws Exception {
-        // replace with code lines from Exercise 05
-        return null;
+        final ODataUpdateResult oDataUpdateResult = businessPartnerService
+                .updateBusinessPartnerAddress(addressToUpdate)
+                .execute(destination);
+
+        return oDataUpdateResult.getHttpStatusCode();
     }
 }

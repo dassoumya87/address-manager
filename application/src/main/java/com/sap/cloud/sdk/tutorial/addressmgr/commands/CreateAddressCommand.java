@@ -27,7 +27,9 @@ public class CreateAddressCommand {
     }
 
     public BusinessPartnerAddress execute() throws Exception {
-        // replace with code lines from Exercise 05
-        return null;
+        return businessPartnerService
+                .createBusinessPartnerAddress(addressToCreate)
+                .execute(destination);
+
     }
 }

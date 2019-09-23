@@ -1,6 +1,7 @@
 package com.sap.cloud.sdk.tutorial.addressmgr.commands;
 
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
+import com.sap.cloud.sdk.datamodel.odata.helper.Order;
 import com.sap.cloud.sdk.odatav2.connectivity.ODataException;
 import com.sap.cloud.sdk.s4hana.connectivity.DefaultErpHttpDestination;
 import com.sap.cloud.sdk.s4hana.connectivity.ErpHttpDestination;
@@ -25,7 +26,14 @@ public class GetAllBusinessPartnersCommand {
     }
 
     public List<BusinessPartner> execute() throws ODataException {
-        // replace with code lines from Exercise 05
-        return null;
+        return businessPartnerService
+                .getAllBusinessPartner()
+                .select(BusinessPartner.BUSINESS_PARTNER,
+                        BusinessPartner.LAST_NAME,
+                        BusinessPartner.FIRST_NAME)
+                .filter(BusinessPartner.BUSINESS_PARTNER_CATEGORY.eq(CATEGORY_PERSON))
+                .orderBy(BusinessPartner.LAST_NAME, Order.ASC)
+                .execute(destination);
+
     }
 }
