@@ -25,7 +25,7 @@ public class GetSingleBusinessPartnerByIdCommand {
 
     private final String id;
 
-    private static final String DESTINATION_NAME = "S4HC_SYSTEM";
+    private static final String DESTINATION_NAME = "ErpQueryEndpoint";
 
     final ErpHttpDestination destination = ErpHttpDestinationUtils
             .getErpHttpDestination(DESTINATION_NAME);

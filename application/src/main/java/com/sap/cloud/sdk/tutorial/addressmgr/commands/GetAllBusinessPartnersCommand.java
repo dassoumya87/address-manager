@@ -26,7 +26,7 @@ public class GetAllBusinessPartnersCommand {
     private final BusinessPartnerService businessPartnerService;
     private final ResilienceConfiguration myResilienceConfig;
 
-    private static final String DESTINATION_NAME = "S4HC_SYSTEM";
+    private static final String DESTINATION_NAME = "ErpQueryEndpoint";
     final ErpHttpDestination destination = DestinationAccessor.getDestination(DESTINATION_NAME)
             .asHttp().decorate(DefaultErpHttpDestination::new);
 

@@ -31,7 +31,7 @@ public class AddressServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(AddressServlet.class);
 
     private final BusinessPartnerService service = new DefaultBusinessPartnerService();
-    private static final String DESTINATION_NAME = "S4HC_SYSTEM";
+    private static final String DESTINATION_NAME = "ErpQueryEndpoint";
     final ErpHttpDestination destination = DestinationAccessor.getDestination(DESTINATION_NAME)
             .asHttp().decorate(DefaultErpHttpDestination::new);
 
